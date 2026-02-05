@@ -7,15 +7,13 @@ function App() {
   return (
     <div className="layout">
 
-      {/* LADO ESQUERDO */}
       <div className="esquerda">
-        <h1>{valor}</h1>
-        <button onClick={() => setValor(valor + 1)}>
+        <h1 className='contador'>{valor}</h1>
+        <button className='botaoPrincipal' onClick={() => setValor(valor + 1)}>
           +1
         </button>
       </div>
 
-      {/* LADO DIREITO */}
       <div className="direita">
         <h2>Painel futuro</h2>
         <p>Aqui você pode adicionar mais coisas.</p>

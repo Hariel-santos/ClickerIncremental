@@ -1,0 +1,257 @@
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background: radial-gradient(circle at center, #3e2723, #1a1a1a);
+  color: #f5deb3;
+}
+
+/* Layout 3 colunas */
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+/* STATUS */
+.status {
+  flex: 1;
+  background: #2b1a0f;
+  padding: 20px;
+  border-right: 3px solid #c19a6b;
+}
+
+/* JOGO */
+.jogo {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* UPGRADES */
+.upgrades {
+  flex: 1;
+  background: #2b1a0f;
+  padding: 20px;
+  border-left: 3px solid #c19a6b;
+}
+
+/* Card central */
+.card {
+  position: relative;
+  background: #4e342e;
+  padding: 60px;
+  border-radius: 15px;
+  text-align: center;
+  border: 4px solid #c19a6b;
+  box-shadow: 0 0 40px rgba(0,0,0,0.8);
+}
+
+/* Contador */
+.contador {
+  font-size: 80px;
+  color: #ffd700;
+  text-shadow: 0 0 15px #ff8c00;
+}
+
+/* Botão principal */
+.botaoPrincipal {
+  padding: 18px 40px;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #8b4513, #cd853f);
+  color: #fff8dc;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.botaoPrincipal:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #ffae42;
+}
+
+/* Botões upgrade */
+.upgrades button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(45deg, #6b3e26, #a0522d);
+  color: #fff8dc;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  transition: 0.2s;
+}
+
+.upgrades button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #ffae42;
+}
+
+/* Número flutuante */
+.numeroFlutuante {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  font-size: 35px;
+  color: #ffd700;
+  animation: subir 1s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes subir {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -120px);
+  }
+}
+.engrenagem {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border: 12px solid #8b4513;
+  border-radius: 50%;
+  top: 40%;
+  left: 15%;
+  opacity: 0.8;
+  transition: transform 0.5s ease;
+}
+
+.engrenagem.girando {
+  transform: rotate(180deg);
+}
+.tubo {
+  position: absolute;
+  right: 10%;
+  bottom: 0;
+  width: 60px;
+  height: 200px;
+  background: linear-gradient(#b87333, #8b4513);
+  border-radius: 20px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+.fumaca {
+  position: absolute;
+  bottom: 180px;
+  left: 50%;
+  width: 60px;
+  background: radial-gradient(circle, rgba(255,255,255,0.6), transparent);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+  filter: blur(8px);
+}
+
+.fumaca.ativa {
+  animation: subirFumaca 1s ease-out forwards;
+}
+
+@keyframes subirFumaca {
+  0% {
+    opacity: 0.7;
+    transform: translate(-50%, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -150px) scale(1.5);
+  }
+}
+.barraContainer {
+  width: 100%;
+  height: 20px;
+  background: #3e2723;
+  border: 2px solid #c19a6b;
+  border-radius: 10px;
+  margin-top: 15px;
+  overflow: hidden;
+}
+
+.barraPressao {
+  height: 100%;
+  background: linear-gradient(90deg, #ff8c00, #ff0000);
+  transition: width 0.3s ease;
+}
+.explosao {
+  position: absolute;
+  background: rgba(255,0,0,0.8);
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  animation: tremor 0.3s infinite;
+}
+
+@keyframes tremor {
+  0% { transform: translate(0); }
+  25% { transform: translate(5px); }
+  50% { transform: translate(-5px); }
+  75% { transform: translate(5px); }
+  100% { transform: translate(0); }
+}
+.explosao {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(120, 20, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  z-index: 999;
+  animation: piscar 0.5s infinite alternate;
+}
+
+@keyframes piscar {
+  from { opacity: 0.7; }
+  to { opacity: 1; }
+}
+
+.explosao button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  background: black;
+  color: white;
+  border: 2px solid orange;
+  cursor: pointer;
+}
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalConteudo {
+  background: #2b1d14;
+  padding: 30px;
+  border: 3px solid #c97b2a;
+  width: 400px;
+  box-shadow: 0 0 20px #ff8c00;
+}
+
+.controle {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+.modal button {
+  background: #8b4513;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  cursor: pointer;
+}
